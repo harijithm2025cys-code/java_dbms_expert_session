@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.demo.model.AppModel;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -25,7 +26,14 @@ public class AppController {
     public List<AppModel> getAll() {
         return service.getAll();
     }
-    
+    @GetMapping("/getById/{id}")
+    public AppModel getById(@PathVariable Long id) {
+        return service.getById(id);
+    }
+    @PostMapping("/update/{id}")
+    public AppModel updateById(@PathVariable Long id, @RequestBody AppModel table) {
+        return service.updateById(id, table);
+    }
     
     
 }
